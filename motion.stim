@@ -1,0 +1,31 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr 08 15:13:41 2019
+
+@author: saskiad
+"""
+
+stimulus = Stimulus(visual.DotStim(window,
+                    #contrast=1.0,
+                    coherence = 1,
+                    dotLife = 10,
+                    nDots=500,
+                    fieldSize=(2.0,2.0),
+                    dotSize = 15
+                    ),
+    sweep_params={
+               'Speed': ([0.0, 0.0005, 0.001, 0.005, 0.01, 0.02, 0.04], 0),
+               'Dir': ([0,180], 1),
+               'Contrast': ([1.0, -1.0], 2),
+               'nDots': ([200,350,500], 3),
+               'dotLife': ([10,20], 4),
+               'dotSize': ([10,15,20], 5),
+               },
+    sweep_length=2.0,
+    start_time=0.0,
+    blank_length=1.0,
+    blank_sweeps=30,
+    runs=15,
+    shuffle=True,
+    save_sweep_table=True,
+    )
