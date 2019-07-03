@@ -7,10 +7,9 @@ Created on Wed Jun 26 23:13:10 2019
 """
 
 import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches
-import time, os
-from matplotlib.collections import PatchCollection
+import cv2
+import os
+from matplotlib import pyplot as plt
 
 viewingDistance = 100
 radius = 10
@@ -63,12 +62,15 @@ def redraw(distToCenter, newPos, unitVectors, newTheta, virtualTimePoint):
         newThetaPix[past90] = np.rad2deg(newTheta[past90])*pixelsPerDegree
         newPos[past90] = unitVectors_past90*newThetaPix[past90][:,None] + centerPos + [180*pixelsPerDegree,0]
     
-    #onscreen = np.array([(-screenWidth/2 <p[0]< screenWidth/2) & (-screenHeight/2<p[1]<screenHeight/2) for p in newPos])
+    onscreen = np.array([(0<p[0]<screenWidth) & (0<p[1]<screenHeight) for p in newPos])
     #repop if necessary
     #if not all(onscreen):
-    if any(past90 & (np.rad2deg(newTheta)<30)):
+    #if any(past90 & (np.rad2deg(newTheta)<30)):
         #repopInds = np.where(~onscreen)[0]
-        repopInds = np.where(past90 & (np.rad2deg(newTheta)<30))[0]
+#        repopInds = np.where(past90 & (np.rad2deg(newTheta)<30))[0]
+#        distToCenter, newPos, unitVectors, newTheta, virtualTimePoint = repop(repopInds, distToCenter, newPos, unitVectors, newTheta, virtualTimePoint)
+    repopInds = np.where(~onscreen)[0]
+    if len(repopInds)>0:
         distToCenter, newPos, unitVectors, newTheta, virtualTimePoint = repop(repopInds, distToCenter, newPos, unitVectors, newTheta, virtualTimePoint)
     
     return distToCenter, newPos, unitVectors, newTheta, virtualTimePoint
@@ -113,7 +115,7 @@ for points in pos_array:
     
     
 for i,im in enumerate(im_array[:200]):
-    cv2.imwrite('im_'+str(i)+'.jpg', im)
+    cv2.imwrite('im_'+str(i)+'_onscreenrepop.jpg', im)
 
 
 
