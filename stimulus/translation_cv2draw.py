@@ -10,17 +10,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches
 import time, os
-from matplotlib.collections import PatchCollection
+import cv2
 
 viewingDistance = 100
 radius = 10
 speed = 4#1
-dotNum = 20
-timePoints = 500#1000
-pixelsPerDegree = 10 
-screenWidth = 1960
-screenHeight = 1200
+dotNum = 100
+timePoints = 120#1000
+pixelsPerDegree = 10/2 
+screenWidth = 1960/2
+screenHeight = 1200/2
 centerPosDegrees = np.array([-60,-20])
+
 
 #Function to generate random dot positions at specified distance range from center
 def getNewDotPositions(dotNum, minDist=5, maxDist=90):
