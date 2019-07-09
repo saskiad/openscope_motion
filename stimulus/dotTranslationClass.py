@@ -19,13 +19,14 @@ class dotTranslation():
         self.dotNum = 20
         self.timePoints = 120
         self.pixelsPerDegree = 10/2 
-        self.screenWidth = 1960/2
-        self.screenHeight = 1200/2
+        self.screenWidth = int(1960/2)
+        self.screenHeight = int(1200/2)
         self.centerPosDegrees = np.array([-60,-20])
         self.scaleFactor = 1/20.
         self.dotColors = [0, 254]
         self.heading = 'forward'
         self.backgroundColor = 127
+        self.saveDir = "/Volumes/LC/motionscope_stimuli"
         
         
         
@@ -77,7 +78,7 @@ class dotTranslation():
         self.virtualTimePoint += 1
         
     
-    def makeStimulusArray(self):
+    def makeStimulusArray(self, save=False, fileName=''):
         #INITIALIZE DOTS
         #pick dots at random screen positions with respect to center point
         self.centerPos = self.centerPosDegrees*self.pixelsPerDegree + np.array([self.screenWidth/2, self.screenHeight/2])
@@ -108,7 +109,11 @@ class dotTranslation():
                 dist180 = ((p[0] - self.centerPos[0] - 180*self.pixelsPerDegree)**2 + (p[1]-self.centerPos[1])**2)**0.5
                 radius = np.min([dist, dist180])*self.scaleFactor
                 cv2.circle(im, tuple(np.round(p).astype(np.int)), int(radius), int(c), -1)
-            self.im_array.append(im)
+            self.im_array.append(im.astype(np.uint8))
         
         if self.heading == 'backward':
             self.im_array = self.im_array[::-1]
+        
+        if save:
+            np.savez_compressed(os.path.join(self.saveDir, fileName), im_array=self.im_array)
+        
