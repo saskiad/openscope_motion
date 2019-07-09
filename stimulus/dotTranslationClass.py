@@ -18,12 +18,14 @@ class dotTranslation():
         self.speed = 4
         self.dotNum = 20
         self.timePoints = 120
-        self.pixelsPerDegree = 10 
-        self.screenWidth = 1960
-        self.screenHeight = 1200
+        self.pixelsPerDegree = 10/2 
+        self.screenWidth = 1960/2
+        self.screenHeight = 1200/2
         self.centerPosDegrees = np.array([-60,-20])
         self.scaleFactor = 1/20.
         self.dotColors = [0, 254]
+        self.heading = 'forward'
+        self.backgroundColor = 127
         
         
         
@@ -100,10 +102,13 @@ class dotTranslation():
             
         self.im_array = []
         for points in self.pos_array:
-            im = np.ones([self.screenHeight, self.screenWidth])*127
+            im = np.ones([self.screenHeight, self.screenWidth])*self.backgroundColor
             for p,c in zip(points, self.dotColorAssignments):
                 dist = ((p[0] - self.centerPos[0])**2 + (p[1]-self.centerPos[1])**2)**0.5
                 dist180 = ((p[0] - self.centerPos[0] - 180*self.pixelsPerDegree)**2 + (p[1]-self.centerPos[1])**2)**0.5
                 radius = np.min([dist, dist180])*self.scaleFactor
                 cv2.circle(im, tuple(np.round(p).astype(np.int)), int(radius), int(c), -1)
             self.im_array.append(im)
+        
+        if self.heading == 'backward':
+            self.im_array = self.im_array[::-1]
