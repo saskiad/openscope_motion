@@ -5,7 +5,7 @@ Created on Sun Jul  7 22:47:36 2019
 
 @author: corbennett
 """
-
+from __future__ import division
 import numpy as np
 import cv2
 import os
@@ -27,7 +27,6 @@ class dotTranslation():
         self.heading = 'forward'
         self.backgroundColor = 127
         self.saveDir = "/Volumes/LC/motionscope_stimuli"
-        
         
         
     #Function to generate random dot positions at specified distance range from center
@@ -77,9 +76,19 @@ class dotTranslation():
         #increment "time point" for each dot
         self.virtualTimePoint += 1
         
-    
-    def makeStimulusArray(self, save=False, fileName=''):
+    def findCenterDotMetrics(self):
+        #find some metrics describing dot size and speed around where RFs are expected to be (center of screen)
+        degToCenter = np.sum(self.centerPosDegrees**2)**0.5
+        self.dotRadiusInCenter = degToCenter * self.scaleFactor
+        theta = np.rad2deg([np.arctan(self.radius/(self.viewingDistance - self.speed*t)) for t in np.arange(0, int(round(self.viewingDistance/self.speed)))])
+        diffTheta = np.diff(theta)
+        thetaIndNearCenter = np.where(theta<=degToCenter)[0][-1]
+        self.dotSpeedInCenter = diffTheta[thetaIndNearCenter] * 60 #multiply by 60 to make speed per second rather than per frame
+        
+    def makeStimulusArray(self, save=False, fileName='', compressed=True, offset=0):
         #INITIALIZE DOTS
+        
+        
         #pick dots at random screen positions with respect to center point
         self.centerPos = self.centerPosDegrees*self.pixelsPerDegree + np.array([self.screenWidth/2, self.screenHeight/2])
         self.pos = self.getNewDotPositions(self.dotNum, 5, 10) + self.centerPos
@@ -114,6 +123,8 @@ class dotTranslation():
         if self.heading == 'backward':
             self.im_array = self.im_array[::-1]
         
-        if save:
+        if save and compressed:
             np.savez_compressed(os.path.join(self.saveDir, fileName), im_array=self.im_array)
+        elif save and not compressed:
+            np.save(os.path.join(self.saveDir, fileName), self.im_array[offset:])
         
