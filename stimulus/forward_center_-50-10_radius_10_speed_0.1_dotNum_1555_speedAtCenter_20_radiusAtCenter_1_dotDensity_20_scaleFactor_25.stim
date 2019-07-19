@@ -1,0 +1,6 @@
+import os
+import shutil
+import numpy as np
+from camstim.core import ImageStimNumpyuByte, checkDirs
+moviesource = r'forward_center_-50-10_radius_10_speed_0.1_dotNum_1555_speedAtCenter_20_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+stimulus = MovieStim(movie_path=moviesource, window=window,frame_length=1.0/60.0,size=(1920, 1200),start_time=0.0,stop_time=None,flip_v=False,runs=1,)

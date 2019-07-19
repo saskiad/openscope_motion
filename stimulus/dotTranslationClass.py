@@ -111,7 +111,7 @@ class dotTranslation():
             self.pos_array.append(self.pos)
             
         self.im_array = []
-        for points in self.pos_array:
+        for points in self.pos_array[offset:]:
             im = np.ones([self.screenHeight, self.screenWidth])*self.backgroundColor
             for p,c in zip(points, self.dotColorAssignments):
                 dist = ((p[0] - self.centerPos[0])**2 + (p[1]-self.centerPos[1])**2)**0.5
@@ -126,5 +126,24 @@ class dotTranslation():
         if save and compressed:
             np.savez_compressed(os.path.join(self.saveDir, fileName), im_array=self.im_array)
         elif save and not compressed:
-            np.save(os.path.join(self.saveDir, fileName), self.im_array[offset:])
+            np.save(os.path.join(self.saveDir, fileName), self.im_array)
+            
+    def playMovie(self, offset=0):
+        plt.figure()
+        mov = plt.imshow(self.im_array[offset], cmap='gray')
+        for im in self.im_array[offset:]:
+            mov.set_array(im)
+            plt.pause(0.001)
+                    
+                    
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         
