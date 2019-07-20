@@ -27,6 +27,8 @@ class dotTranslation():
         self.heading = 'forward'
         self.backgroundColor = 127
         self.saveDir = "/Volumes/LC/motionscope_stimuli"
+        self.repopMaxDist = 10
+        
         
         
     #Function to generate random dot positions at specified distance range from center
@@ -41,9 +43,13 @@ class dotTranslation():
 
     #Function to repopulate dots that are past 90 degrees visual angle
     def repop(self, repopInds):
-        self.pos[repopInds] = self.getNewDotPositions(repopInds.size) + self.centerPos
-        self.distToCenter[repopInds] = np.sqrt(np.sum((self.pos[repopInds] - self.centerPos)**2, axis=1))
-        self.unitVectors[repopInds] = (self.pos[repopInds] - self.centerPos)/self.distToCenter[repopInds, None]
+        #self.pos[repopInds] = self.getNewDotPositions(repopInds.size, minDist=5, self.repopMaxDist) + self.centerPos
+        #self.distToCenter[repopInds] = np.sqrt(np.sum((self.pos[repopInds] - self.centerPos)**2, axis=1))
+        #self.unitVectors[repopInds] = (self.pos[repopInds] - self.centerPos)/self.distToCenter[repopInds, None]
+        
+        ###
+        self.distToCenter[repopInds] = self.pixelsPerDegree*np.random.uniform(5, self.repopMaxDist, size=repopInds.size)
+        ###
         self.theta[repopInds] = np.deg2rad(self.distToCenter[repopInds]/self.pixelsPerDegree)
         self.virtualTimePoint[repopInds] = (self.viewingDistance - (self.radius/np.tan(self.theta[repopInds])))/self.speed
         
@@ -62,10 +68,12 @@ class dotTranslation():
         past90 = np.rad2deg(self.theta)<0
         if np.sum(past90)>0:
             unitVectors_past90 = np.copy(self.unitVectors[past90])
-            unitVectors_past90 = unitVectors_past90 * [-1,1] #reflect about vertical
+#            unitVectors_past90 = unitVectors_past90 * [-1,1] #reflect about vertical
+            unitVectors_past90 = unitVectors_past90 * [-1,-1] #reflect
             self.theta[past90]  = np.abs(self.theta[past90])
             newThetaPix[past90] = np.rad2deg(self.theta[past90])*self.pixelsPerDegree
-            self.pos[past90] = unitVectors_past90*newThetaPix[past90][:,None] + self.centerPos + [180*self.pixelsPerDegree,0]
+#            self.pos[past90] = unitVectors_past90*newThetaPix[past90][:,None] + self.centerPos + [180*self.pixelsPerDegree,0]
+            self.pos[past90] = unitVectors_past90*newThetaPix[past90][:,None]  + self.centerPos + 180*self.pixelsPerDegree*self.unitVectors[past90]
         
         onscreen = np.array([(0<p[0]<self.screenWidth) & (0<p[1]<self.screenHeight) for p in self.pos])
        
@@ -91,7 +99,7 @@ class dotTranslation():
         
         #pick dots at random screen positions with respect to center point
         self.centerPos = self.centerPosDegrees*self.pixelsPerDegree + np.array([self.screenWidth/2, self.screenHeight/2])
-        self.pos = self.getNewDotPositions(self.dotNum, 5, 10) + self.centerPos
+        self.pos = self.getNewDotPositions(self.dotNum, 5, 90) + self.centerPos
         
         #find how far they are from center and find unit vectors along which to move them
         self.distToCenter = np.sqrt(np.sum((self.pos - self.centerPos)**2, axis=1))
@@ -115,7 +123,9 @@ class dotTranslation():
             im = np.ones([self.screenHeight, self.screenWidth])*self.backgroundColor
             for p,c in zip(points, self.dotColorAssignments):
                 dist = ((p[0] - self.centerPos[0])**2 + (p[1]-self.centerPos[1])**2)**0.5
-                dist180 = ((p[0] - self.centerPos[0] - 180*self.pixelsPerDegree)**2 + (p[1]-self.centerPos[1])**2)**0.5
+                #dist180 = ((p[0] - self.centerPos[0] - 180*self.pixelsPerDegree)**2 + (p[1]-self.centerPos[1])**2)**0.5
+                distDegrees = dist/self.pixelsPerDegree
+                dist180 = self.pixelsPerDegree*(180-distDegrees)
                 radius = np.min([dist, dist180])*self.scaleFactor
                 cv2.circle(im, tuple(np.round(p).astype(np.int)), int(radius), int(c), -1)
             self.im_array.append(im.astype(np.uint8))
@@ -128,9 +138,10 @@ class dotTranslation():
         elif save and not compressed:
             np.save(os.path.join(self.saveDir, fileName), self.im_array)
             
-    def playMovie(self, offset=0):
-        plt.figure()
-        mov = plt.imshow(self.im_array[offset], cmap='gray')
+    def playMovie(self, ax=None, offset=0):
+        if ax is None:
+            fig, ax = plt.subplots()
+        mov = ax.imshow(self.im_array[offset], cmap='gray')
         for im in self.im_array[offset:]:
             mov.set_array(im)
             plt.pause(0.001)
