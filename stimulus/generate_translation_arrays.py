@@ -45,8 +45,8 @@ d.saveDir = r"\\allen\programs\braintv\workgroups\nc-ophys\corbettb\motion stimu
 headings = ['forward', 'backward']
 centers = [[-50,-10]]
 radius = [10]
-speeds = [4, 2, 0.5, 0.1, 0.05]
-dotDensities = [0.2, 0.4, 0.8]
+speeds = [2.05, 1, 0.48, 0.24, 0.096, 0.05] #to make speeds at center [400,200,100,50,20,10]
+dotDensities = [0.1, 0.2, 0.4]
 scaleFactors = [1/20., 1/40.]
 
 
