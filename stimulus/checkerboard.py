@@ -13,10 +13,10 @@ import fileIO
 class MovingCheckerboard():
 
     def __init__(self):
-        self.savePath = r"\\allen\programs\braintv\workgroups\nc-ophys\corbettb\motion stimuli\checkerboard"
+        self.savePath = r"\\allen\programs\braintv\workgroups\nc-ophys\corbettb\motion stimuli\checkerboard\test"
         self.frameRate = 60.0
         self.imagePosition = (0,0)
-        self.imageSize = (980*2,600)
+        self.imageSize = (960*2,600)
         self.pixelsPerDeg = 5
         self.moveLikeOpticFlow = True # left/right bckgnd move oppositely for horizontal motion
         self.squareSize = 1 # degrees
@@ -77,9 +77,10 @@ class MovingCheckerboard():
         self.trialPatchSpeed = []
         self.trialPatchDir = []
         self.trialPatchPos = []
-        while trial<len(trialTypes)-1:
+        while trial<=len(trialTypes)-1: #This used to be just <, which I think omits one of the stimulus conditions...
             if trialFrame==-1:
                 trial += 1
+                print('starting trial: ' + str(trial))
                 trialFrame = 0
                 self.trialBckgndSpeed.append(trialTypes[trial][0])
                 self.trialBckgndDir.append(trialTypes[trial][1])
@@ -131,6 +132,7 @@ class MovingCheckerboard():
             else:     
                 if trialFrame==0:
                     self.trialStartFrame.append(frame)
+                    print('starting movie for trial: ' + str(trial))
                 if bckgndMovPerFrame>0:
                     if bckgndOffset==0:
                         bckgndOffset = self._squareSizePix
@@ -205,6 +207,7 @@ class MovingCheckerboard():
                 frame += 1
                 trialFrame += 1
                 if trialFrame==self.trialNumFrames[-1]:
+                    print('saving trial:' + str(trial))
                     np.save(os.path.join(self.savePath,'trial'+str(trial)+ '_duration_' + str(self.trialNumFrames[-1]/self.frameRate) + '.npy'),np.stack(trialMovie))
                     trialFrame = -1
         fileIO.objToHDF5(self,os.path.join(self.savePath,'params.hdf5'))

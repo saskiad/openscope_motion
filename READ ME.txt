@@ -1,0 +1,24 @@
+Openscope Motion Pilot Stimuli
+
+There are three sessions:
+
+Dot stimuli session one:
+Entire session consists of interleaved trials of either "rotation" dot stimuli (all dots move coherently left or right), or "translation" dot stimuli (dots appear to flow past as though the viewer is travelling through a tunnel).Dot speed, density, size and motion direction are varied.
+
+-180 conditions repeated 10 times
+-Each condition runs for 1 second followed by 1 second gray screen
+-Total: 180X10X2 seconds run time (3600 s or 1 hour)
+
+
+Dot stimuli session two:
+-Same stimuli as session one but presented in different order.
+
+
+Checkerboard local global motion:
+
+-Entire session consists of random checkerboard stimuli in which the full field background moves either left or right and a small patch moves differentially across the screen left or right. Background/patch speed and direction are varied.
+
+-36 conditions repeated 12 times
+-Trial duration ranges from 2 to 8.8 seconds (depending on patch speed) followed by 2 seconds of gray screen
+-Total: 3234 s or 53.9 min
+

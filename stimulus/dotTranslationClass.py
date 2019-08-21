@@ -19,7 +19,7 @@ class dotTranslation():
         self.dotNum = 20
         self.timePoints = 120
         self.pixelsPerDegree = 10/2 
-        self.screenWidth = int(1960/2)
+        self.screenWidth = int(1920/2)
         self.screenHeight = int(1200/2)
         self.centerPosDegrees = np.array([-60,-20])
         self.scaleFactor = 1/20.
@@ -27,15 +27,15 @@ class dotTranslation():
         self.heading = 'forward'
         self.backgroundColor = 127
         self.saveDir = "/Volumes/LC/motionscope_stimuli"
-        self.repopMaxDist = 10
+        self.repopMaxDist = 15
         
         
         
     #Function to generate random dot positions at specified distance range from center
-    def getNewDotPositions(self, dotNum, minDist=5, maxDist=90):
+    def getNewDotPositions(self, dotNum, minDist=8, maxDist=90):
         minDist *= self.pixelsPerDegree
         maxDist *= self.pixelsPerDegree
-        dists = np.random.uniform(minDist, maxDist, size=dotNum)
+        dists = np.random.uniform(minDist, maxDist, dotNum)
         angles = np.pi * np.random.uniform(0, 2, size=dotNum)
         x = dists * np.cos(angles)
         y = dists * np.sin(angles)
@@ -48,7 +48,7 @@ class dotTranslation():
         #self.unitVectors[repopInds] = (self.pos[repopInds] - self.centerPos)/self.distToCenter[repopInds, None]
         
         ###
-        self.distToCenter[repopInds] = self.pixelsPerDegree*np.random.uniform(5, self.repopMaxDist, size=repopInds.size)
+        self.distToCenter[repopInds] = self.pixelsPerDegree*(np.random.uniform(8, self.repopMaxDist, repopInds.size))
         ###
         self.theta[repopInds] = np.deg2rad(self.distToCenter[repopInds]/self.pixelsPerDegree)
         self.virtualTimePoint[repopInds] = (self.viewingDistance - (self.radius/np.tan(self.theta[repopInds])))/self.speed
@@ -99,7 +99,7 @@ class dotTranslation():
         
         #pick dots at random screen positions with respect to center point
         self.centerPos = self.centerPosDegrees*self.pixelsPerDegree + np.array([self.screenWidth/2, self.screenHeight/2])
-        self.pos = self.getNewDotPositions(self.dotNum, 5, 90) + self.centerPos
+        self.pos = self.getNewDotPositions(self.dotNum, 8, 10) + self.centerPos
         
         #find how far they are from center and find unit vectors along which to move them
         self.distToCenter = np.sqrt(np.sum((self.pos - self.centerPos)**2, axis=1))

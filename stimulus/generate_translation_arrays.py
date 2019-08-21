@@ -11,32 +11,34 @@ import dotTranslationClass
 
 #FIND RELATIONSHIP BETWEEN DOTNUM AND SCREEN DENSITY
 d = dotTranslationClass.dotTranslation()
-iterations = 10
-dotNums = [20, 40, 80, 160]
+iterations = 2
+dotNums = [20, 80, 320, 800, 1600, 5000]
 densityPerDot_i = []
+func = lambda x,a,b: b*x**(float(a))
 plt.figure()
 for i in np.arange(iterations):
     lum = []
     for dotNum in dotNums:
         d.dotNum=dotNum
-        d.timePoints=60
+        d.timePoints=500
         d.dotColors = [255]
         d.backgroundColor = 0
-        d.makeStimulusArray()
+        d.makeStimulusArray(offset=-60)
         
-        lum.append(np.mean([np.mean(im) for im in d.im_array[20:]]))
+        lum.append(np.mean([np.mean(im[200:400, 390:590]) for im in d.im_array]))
     
     lum = np.array(lum)
-    plt.plot(dotNums, lum/255., 'ko')
+    plt.plot(lum/255., dotNums, 'ko')
     
-    densityPerDot, pcov = scipy.optimize.curve_fit(lambda x,b: b*x, dotNums, lum/255.)
-    densityPerDot_i.append(densityPerDot[0])
-    plt.plot(dotNums, np.array(dotNums)*densityPerDot[0])
-densityPerDot = np.mean(densityPerDot_i)
+    densityPerDot, pcov = scipy.optimize.curve_fit(func, lum/255., dotNums)
+    densityPerDot_i.append(densityPerDot)
+    plt.plot(lum/255., func(lum/255., *densityPerDot))
+
+densityPerDot = np.mean(densityPerDot_i, axis=0)
 
 #Determined before for scale factors 1/20 and 1/40
-densityPerDot_20 = 0.0005227195853341336
-densityPerDot_40 = 0.00012861953781512608
+densityPerDot_20 = np.array([1.27355431e+00, 1.16888103e+04])
+densityPerDot_40 = np.array([1.06916041e+00, 3.56860910e+04])
 
 
 #MAKE STIM ARRAYS
@@ -49,7 +51,7 @@ speeds = [2.05, 1, 0.48, 0.24, 0.096, 0.05] #to make speeds at center [400,200,1
 dotDensities = [0.1, 0.2, 0.4]
 scaleFactors = [1/20., 1/40.]
 
-
+fig, ax = plt.subplots()
 for h in headings:
     for center in centers:
         for rad in radius:
@@ -60,11 +62,11 @@ for h in headings:
                         d.centerPosDegrees=np.array(center)
                         d.radius = rad
                         d.speed = speed
-                        d.timePoints =  np.max([120, 60+(d.viewingDistance/speed)])
+                        d.timePoints =  np.max([500, 60+3*(d.viewingDistance/speed)])
                         if scale == 0.05:
-                            dotNum = np.round(dotDensity/densityPerDot_20).astype(int) 
+                            dotNum = np.round(func(dotDensity, *densityPerDot_20)).astype(int)
                         else:
-                            dotNum = np.round(dotDensity/densityPerDot_40).astype(int)
+                            dotNum = np.round(func(dotDensity, *densityPerDot_40)).astype(int)
                         
                         d.dotNum = dotNum
                         d.scaleFactor = scale
@@ -75,5 +77,6 @@ for h in headings:
                         
                         print(saveFileName)
                         d.makeStimulusArray(save=True, fileName=saveFileName, compressed=False, offset=-60)
+                        d.playMovie(ax=ax)
                     
 
