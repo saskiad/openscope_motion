@@ -1,0 +1,362 @@
+(lp0
+S'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_5180_speedAtCenter_99_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p1
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_1184_speedAtCenter_19_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p2
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_11882_speedAtCenter_398_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p3
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_11882_speedAtCenter_10_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p4
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_2888_speedAtCenter_19_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p5
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_2888_speedAtCenter_49_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p6
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_2258_speedAtCenter_199_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p7
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_5180_speedAtCenter_199_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p8
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_485_speedAtCenter_10_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p9
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_5180_speedAtCenter_19_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p10
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_5180_speedAtCenter_398_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p11
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_485_speedAtCenter_19_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p12
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_2258_speedAtCenter_10_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p13
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_485_speedAtCenter_398_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p14
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_485_speedAtCenter_49_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p15
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_2258_speedAtCenter_99_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p16
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_11882_speedAtCenter_99_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p17
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_1184_speedAtCenter_199_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p18
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_11882_speedAtCenter_199_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p19
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_11882_speedAtCenter_49_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p20
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_2888_speedAtCenter_10_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p21
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_5180_speedAtCenter_10_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p22
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_485_speedAtCenter_99_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p23
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_2258_speedAtCenter_10_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p24
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_5180_speedAtCenter_99_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p25
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_485_speedAtCenter_199_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p26
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_2258_speedAtCenter_19_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p27
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_485_speedAtCenter_398_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p28
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_2258_speedAtCenter_398_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p29
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_2888_speedAtCenter_49_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p30
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_2888_speedAtCenter_398_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p31
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_485_speedAtCenter_10_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p32
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_5180_speedAtCenter_49_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p33
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_2888_speedAtCenter_19_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p34
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_5180_speedAtCenter_19_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p35
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_2888_speedAtCenter_10_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p36
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_2888_speedAtCenter_99_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p37
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_5180_speedAtCenter_49_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p38
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_11882_speedAtCenter_19_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p39
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.096_dotNum_1184_speedAtCenter_19_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p40
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_11882_speedAtCenter_49_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p41
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_1184_speedAtCenter_199_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p42
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_11882_speedAtCenter_199_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p43
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_2258_speedAtCenter_19_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p44
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_485_speedAtCenter_99_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p45
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_2888_speedAtCenter_199_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p46
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_2258_speedAtCenter_199_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p47
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_1184_speedAtCenter_49_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p48
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_1184_speedAtCenter_398_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p49
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_485_speedAtCenter_49_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p50
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.24_dotNum_2258_speedAtCenter_49_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p51
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_2258_speedAtCenter_49_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p52
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_11882_speedAtCenter_398_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p53
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_1184_speedAtCenter_99_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p54
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_1184_speedAtCenter_99_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p55
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_2888_speedAtCenter_199_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p56
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.05_dotNum_1184_speedAtCenter_10_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p57
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.24_dotNum_1184_speedAtCenter_49_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p58
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_2888_speedAtCenter_99_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p59
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_1_dotNum_485_speedAtCenter_199_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p60
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_11882_speedAtCenter_10_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p61
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_2888_speedAtCenter_398_radiusAtCenter_2_dotDensity_40_scaleFactor_50.npy'
+p62
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_5180_speedAtCenter_10_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p63
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_2258_speedAtCenter_398_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p64
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.48_dotNum_2258_speedAtCenter_99_radiusAtCenter_1_dotDensity_10_scaleFactor_25.npy'
+p65
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_11882_speedAtCenter_19_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p66
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_2.05_dotNum_5180_speedAtCenter_398_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p67
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_2.05_dotNum_1184_speedAtCenter_398_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p68
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.096_dotNum_485_speedAtCenter_19_radiusAtCenter_2_dotDensity_10_scaleFactor_50.npy'
+p69
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_0.05_dotNum_1184_speedAtCenter_10_radiusAtCenter_2_dotDensity_20_scaleFactor_50.npy'
+p70
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\backward_center_-50-10_radius_10_speed_0.48_dotNum_11882_speedAtCenter_99_radiusAtCenter_1_dotDensity_40_scaleFactor_25.npy'
+p71
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\corbettb\\motion stimuli\\translation\\forward_center_-50-10_radius_10_speed_1_dotNum_5180_speedAtCenter_199_radiusAtCenter_1_dotDensity_20_scaleFactor_25.npy'
+p72
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_100_12.npy'
+p73
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_50_5.npy'
+p74
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_10_8.npy'
+p75
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_50_8.npy'
+p76
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_10_5.npy'
+p77
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_10_12.npy'
+p78
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_200_5.npy'
+p79
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_100_12.npy'
+p80
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_50_5.npy'
+p81
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_400_12.npy'
+p82
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_400_8.npy'
+p83
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_20_5.npy'
+p84
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_100_12.npy'
+p85
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_400_5.npy'
+p86
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_10_12.npy'
+p87
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_50_8.npy'
+p88
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_200_8.npy'
+p89
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_20_8.npy'
+p90
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_50_8.npy'
+p91
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_100_12.npy'
+p92
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_400_5.npy'
+p93
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_50_5.npy'
+p94
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_20_12.npy'
+p95
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_400_5.npy'
+p96
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_200_8.npy'
+p97
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_20_8.npy'
+p98
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_10_8.npy'
+p99
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_20_5.npy'
+p100
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_20_12.npy'
+p101
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_200_5.npy'
+p102
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_200_8.npy'
+p103
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_200_12.npy'
+p104
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_10_5.npy'
+p105
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_200_12.npy'
+p106
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_20_8.npy'
+p107
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_50_5.npy'
+p108
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_20_5.npy'
+p109
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_50_12.npy'
+p110
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_50_5.npy'
+p111
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_400_12.npy'
+p112
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_100_8.npy'
+p113
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_10_5.npy'
+p114
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_400_12.npy'
+p115
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_200_8.npy'
+p116
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_10_12.npy'
+p117
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_20_5.npy'
+p118
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_100_12.npy'
+p119
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_50_12.npy'
+p120
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_100_8.npy'
+p121
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_20_12.npy'
+p122
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_20_8.npy'
+p123
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_50_12.npy'
+p124
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_10_8.npy'
+p125
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_200_12.npy'
+p126
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_400_8.npy'
+p127
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_400_5.npy'
+p128
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_10_5.npy'
+p129
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_50_12.npy'
+p130
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_400_8.npy'
+p131
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_20_5.npy'
+p132
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_200_12.npy'
+p133
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_100_8.npy'
+p134
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_200_8.npy'
+p135
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_400_8.npy'
+p136
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_400_5.npy'
+p137
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_100_5.npy'
+p138
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_200_5.npy'
+p139
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_10_8.npy'
+p140
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_200_12.npy'
+p141
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_20_12.npy'
+p142
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_50_8.npy'
+p143
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_200_5.npy'
+p144
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_100_5.npy'
+p145
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_200_12.npy'
+p146
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_400_8.npy'
+p147
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_10_12.npy'
+p148
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_50_5.npy'
+p149
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_10_8.npy'
+p150
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_50_12.npy'
+p151
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_10_12.npy'
+p152
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_20_12.npy'
+p153
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_100_8.npy'
+p154
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_50_12.npy'
+p155
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_10_5.npy'
+p156
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_400_5.npy'
+p157
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_200_5.npy'
+p158
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_10_5.npy'
+p159
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_100_5.npy'
+p160
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_100_5.npy'
+p161
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_10_8.npy'
+p162
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_100_8.npy'
+p163
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_200_8.npy'
+p164
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_200_5.npy'
+p165
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_100_5.npy'
+p166
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_400_12.npy'
+p167
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_400_8.npy'
+p168
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_300_20_5.npy'
+p169
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_10_12.npy'
+p170
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_100_5.npy'
+p171
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_100_12.npy'
+p172
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_50_8.npy'
+p173
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_20_8.npy'
+p174
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_545_20_8.npy'
+p175
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_545_50_8.npy'
+p176
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_400_12.npy'
+p177
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_left_1000_100_8.npy'
+p178
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_1000_20_12.npy'
+p179
+aS'\\\\allen\\programs\\braintv\\workgroups\\nc-ophys\\Saskia\\openscope_motion\\npyfiles_final_final\\rotation_right_300_400_12.npy'
+p180
+a.
