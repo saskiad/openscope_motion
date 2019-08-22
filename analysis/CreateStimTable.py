@@ -130,29 +130,77 @@ def get_sync_table(logpath, twop_frames):
     f = open(logpath, 'rb')
     data = pickle.load(f)
     f.close()
+    if len(data['stimuli'])>1:
+        num_trials = len(data['stimuli'])
+        for trial in range(num_trials):
+            temp = pd.DataFrame(columns=('start','end','trial'))
+            starts = findlevels(data['stimuli'][trial]['frame_list'], -0.5, direction='up')
+            ends = findlevels(data['stimuli'][trial]['frame_list'], -0.5, direction='down')
+            ends = np.append(ends, [len(data['stimuli'][trial]['frame_list'])-1])
+#            print len(ends), len(starts)
+            if len(ends)>len(starts):
+#                print len(ends), len(starts)
+                starts = np.insert(starts, 0, 0)
+            temp['start'] = starts
+            temp['end'] = ends
+            temp['trial'] = data['stimuli'][trial]['stim_path'].split('\\')[-1]
+            if trial==0:
+                stim_table = temp.copy()
+            else:
+                stim_table = stim_table.append(temp)
+        stim_table.reset_index(inplace=True)
+        sync_table = pd.DataFrame(np.column_stack((twop_frames[stim_table['start']], twop_frames[stim_table['end']])), columns=('start', 'end'))
+        sync_table['trial'] = stim_table.trial
     
-    stim_table = pd.DataFrame(columns=('start','end','start_frame'))
-
-    frame_list  = np.array(data['stimuli'][0]['frame_list'])
-    starts = findlevels(frame_list, 0, direction='up')
-    starts = np.insert(starts, 0, 0)
-    ends = starts+60
-    # ends = findlevels(frame_list, 0, direction='down')
-    stim_table['start'] = starts
-    stim_table['end'] = ends
-    stim_table['start_frame'] = frame_list[starts]
+    else:   
+        stim_table = pd.DataFrame(columns=('start','end','start_frame'))
+    
+        frame_list  = np.array(data['stimuli'][0]['frame_list'])
+        starts = findlevels(frame_list, -0.5, direction='up')
+        starts = np.insert(starts, 0, 0)
+        ends = starts+60
+        # ends = findlevels(frame_list, 0, direction='down')
+        stim_table['start'] = starts
+        stim_table['end'] = ends
+        stim_table['start_frame'] = frame_list[starts]
                  
-    sync_table = pd.DataFrame(np.column_stack((twop_frames[stim_table['start']], twop_frames[stim_table['end']])), columns=('Start', 'End'))
-    sync_table['start_frame'] = stim_table.start_frame    
-           
+        sync_table = pd.DataFrame(np.column_stack((twop_frames[stim_table['start']], twop_frames[stim_table['end']])), columns=('start', 'end'))
+        sync_table['start_frame'] = stim_table.start_frame    
+    sync_table['duration'] = sync_table.end - sync_table.start           
     return sync_table
+
+
 
 #exptpath = r'/Volumes/braintv/workgroups/nc-ophys/ImageData/Saskia/20170531_307744/NaturalScenesUP'            
 #logpath, syncpath = get_files(exptpath)
-logpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_923803144/923803144_469326_20190814_stim.pkl'
-syncpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_923803144/923803144_469326_20190814_sync.h5'
+#for f in os.listdir(r'/Volumes/My Passport/Openscope Motion'):
+#    print f
+#    expt_path = os.path.join(r'/Volumes/My Passport/Openscope Motion', f)
+#    session_id = f.split('_')[-1]
+#    for f2 in os.listdir(expt_path):
+#        if f2.endswith('_stim.pkl'):
+#            logpath = os.path.join(expt_path, f2)
+#        if f2.endswith('_sync.h5'):
+#            syncpath = os.path.join(expt_path, f2)
+#    try:
+#        print logpath
+#        print syncpath    
+#        twop_frames, acquisition_rate = get_sync(syncpath)
+#        sync_table = get_sync_table(logpath, twop_frames)
+#        sync_table.to_csv(os.path.join(r'/Users/saskiad/Dropbox/Openscope Motion/stim_tables', session_id+'_stim_table.csv'))
+#        del(logpath)
+#        del(syncpath)
+#    except:
+#        pass
+    
+    
+
+logpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_925172886/925172886_468987_20190816_stim.pkl'
+syncpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_925172886/925172886_468987_20190816_sync.h5'
 
 twop_frames, acquisition_rate = get_sync(syncpath)
 #sync_dict = get_sync_table(logpath, twop_frames)            
 #            
 sync_table = get_sync_table(logpath, twop_frames)
+
+

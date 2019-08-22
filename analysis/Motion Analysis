@@ -1,0 +1,80 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Aug 20 09:56:14 2019
+
+@author: saskiad
+"""
+
+import numpy as np
+import pandas as pd
+import os
+import h5py
+
+def do_sweep_mean(x):
+    return x[30:-30].mean()
+
+session_id = 923803144
+def motion_analysis(session_id, stimulus, save_flag=True):
+    
+    dff_dir = r'/Volumes/My Passport/Openscope Motion'
+    dff_path = os.path.join(dff_dir, 'ophys_session_'+str(session_id))
+    for f in os.listdir(dff_path):
+        if f.startswith('ophys_experiment'):
+            for f2 in os.listdir(os.path.join(dff_path, f)):
+                if f2.endswith('dff.h5'):
+                    dff_file = os.path.join(dff_path, f, f2)
+    print dff_file
+
+    stim_dir = r'/Users/saskiad/Dropbox/Openscope Motion/stim_tables'
+    stim_table = pd.read_csv(os.path.join(stim_dir, str(session_id)+'_stim_table.csv'))
+    
+    #load dff traces   
+    f = h5py.File(dff_file, 'r')
+    dff = f['data'].value
+    f.close()
+    numbercells = dff.shape[0]
+    
+    #compute sweep response and mean sweep response
+    #no longer padding the sweep response to account for variable sweep durations. 
+    sweep_response = pd.DataFrame(index=stim_table.index.values, columns=np.array(range(numbercells)).astype(str))
+    for index, row in stim_table.iterrows():
+        for nc in range(numbercells):
+            sweep_response[str(nc)][index] = dff[nc, int(row.start-30):int(row.end+30)]
+    mean_sweep_response = sweep_response.applymap(do_sweep_mean)
+    
+    #compute response array
+    if stimulus=='dots':
+        frames = np.sort(stim_table.start_frame.unique())
+        response = np.empty((len(frames), numbercells, 2))
+        for i,v in enumerate(frames):
+            response[i,:,0] = mean_sweep_response[stim_table.start_frame==v].mean().values
+            response[i,:,1] = mean_sweep_response[stim_table.start_frame==v].std().values/np.sqrt(len(mean_sweep_response[stim_table.start_frame==v]))
+        
+    elif stimulus=='checkerboard':
+        frames = np.sort(stim_table.trial.unique())
+        response = np.empty((len(frames), numbercells, 2))
+        for i,v in enumerate(frames):
+            response[i,:,0] = mean_sweep_response[stim_table.trial==v].mean().values
+            response[i,:,1] = mean_sweep_response[stim_table.trial==v].std().values/np.sqrt(len(mean_sweep_response[stim_table.trial==v]))
+                
+    #save results    
+    if save_flag==True:
+        save_path = r'/Users/saskiad/Dropbox/Openscope Motion/analysis_files'
+        save_file = os.path.join(save_path, str(session_id)+'_analysis.h5')
+        store = pd.HDFStore(save_file)
+        store['sweep_response'] = sweep_response
+        store['mean_sweep_response'] = mean_sweep_response
+        store['stim_table'] = stim_table
+        store.close()
+        f = h5py.File(save_file, 'r+')
+        dset = f.create_dataset('response', data=response)
+        f.close()
+    
+    return sweep_response, mean_sweep_response, response, stim_table
+
+
+if __name__=='__main__':
+    session_id = 919853170
+    stimulus = 'checkerboard'
+    sweep_response, mean_sweep_response, response, stim_table = motion_analysis(session_id, stimulus, save_flag=True)
