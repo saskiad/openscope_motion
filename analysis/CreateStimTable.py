@@ -151,6 +151,12 @@ def get_sync_table(logpath, twop_frames):
         stim_table.reset_index(inplace=True)
         sync_table = pd.DataFrame(np.column_stack((twop_frames[stim_table['start']], twop_frames[stim_table['end']])), columns=('start', 'end'))
         sync_table['trial'] = stim_table.trial
+        sync_table['trial_number'] = np.NaN
+        for index, row in sync_table.iterrows():
+            sync_table['trial_number'].loc[index] = int(row.trial.split('_')[0][5:])
+        
+        checkerboard = pd.read_csv(r'/Users/saskiad/openscope_motion/analysis/checkerboardTrialParams.csv')
+        sync_table = pd.merge(sync_table, checkerboard, on='trial_number')
     
     else:   
         stim_table = pd.DataFrame(columns=('start','end','start_frame'))
@@ -165,7 +171,11 @@ def get_sync_table(logpath, twop_frames):
         stim_table['start_frame'] = frame_list[starts]
                  
         sync_table = pd.DataFrame(np.column_stack((twop_frames[stim_table['start']], twop_frames[stim_table['end']])), columns=('start', 'end'))
-        sync_table['start_frame'] = stim_table.start_frame    
+        sync_table['start_frame'] = stim_table.start_frame
+        
+        dots = pd.read_csv(r'/Users/saskiad/openscope_motion/analysis/dotstim1_param_table.csv')
+        dots.rename(columns={'movieFrameStart':'start_frame'}, inplace=True)
+        sync_table = pd.merge(sync_table, dots, on='start_frame')
     sync_table['duration'] = sync_table.end - sync_table.start           
     return sync_table
 
@@ -173,34 +183,35 @@ def get_sync_table(logpath, twop_frames):
 
 #exptpath = r'/Volumes/braintv/workgroups/nc-ophys/ImageData/Saskia/20170531_307744/NaturalScenesUP'            
 #logpath, syncpath = get_files(exptpath)
-#for f in os.listdir(r'/Volumes/My Passport/Openscope Motion'):
-#    print f
-#    expt_path = os.path.join(r'/Volumes/My Passport/Openscope Motion', f)
-#    session_id = f.split('_')[-1]
-#    for f2 in os.listdir(expt_path):
-#        if f2.endswith('_stim.pkl'):
-#            logpath = os.path.join(expt_path, f2)
-#        if f2.endswith('_sync.h5'):
-#            syncpath = os.path.join(expt_path, f2)
-#    try:
-#        print logpath
-#        print syncpath    
-#        twop_frames, acquisition_rate = get_sync(syncpath)
-#        sync_table = get_sync_table(logpath, twop_frames)
-#        sync_table.to_csv(os.path.join(r'/Users/saskiad/Dropbox/Openscope Motion/stim_tables', session_id+'_stim_table.csv'))
-#        del(logpath)
-#        del(syncpath)
-#    except:
-#        pass
+for f in os.listdir(r'/Volumes/My Passport/Openscope Motion'):
+    if f.endswith('.xlsx'):
+        pass
+    else:
+        print f
+        expt_path = os.path.join(r'/Volumes/My Passport/Openscope Motion', f)
+        session_id = f.split('_')[-1]
+        for f2 in os.listdir(expt_path):
+            if f2.endswith('_stim.pkl'):
+                logpath = os.path.join(expt_path, f2)
+            if f2.endswith('_sync.h5'):
+                syncpath = os.path.join(expt_path, f2)
+        try:
+            print logpath
+            print syncpath    
+            twop_frames, acquisition_rate = get_sync(syncpath)
+            sync_table = get_sync_table(logpath, twop_frames)
+            sync_table.to_csv(os.path.join(r'/Users/saskiad/Dropbox/Openscope Motion/stim_tables', session_id+'_stim_table.csv'))
+            del(logpath)
+            del(syncpath)
+        except:
+            pass
     
     
 
-logpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_925172886/925172886_468987_20190816_stim.pkl'
-syncpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_925172886/925172886_468987_20190816_sync.h5'
-
-twop_frames, acquisition_rate = get_sync(syncpath)
-#sync_dict = get_sync_table(logpath, twop_frames)            
-#            
-sync_table = get_sync_table(logpath, twop_frames)
+#logpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_927781186/927781186_469326_20190820_stim.pkl'
+#syncpath = r'/Volumes/My Passport/Openscope Motion/ophys_session_927781186/927781186_469326_20190820_sync.h5'
+#
+#twop_frames, acquisition_rate = get_sync(syncpath)           
+#sync_table = get_sync_table(logpath, twop_frames)
 
 
