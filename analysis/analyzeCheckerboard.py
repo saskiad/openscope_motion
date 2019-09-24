@@ -106,6 +106,7 @@ def dictToHDF5(saveDict, filePath, fileOut=None, grp=None, overwrite=True):
                         print('Could not save: ', key)                  
     if newFile is not None:
         newFile.close()
+
 @njit    
 def getShuffledTrialResponse(cellData, trialDur, num_iter=10000):
     means = np.zeros(num_iter)
@@ -116,7 +117,7 @@ def getShuffledTrialResponse(cellData, trialDur, num_iter=10000):
         means[i] = np.mean(strial)
         maxs[i] = np.max(strial)
     
-    return np.mean(means), np.mean(maxs)
+    return np.mean(means), np.mean(maxs), np.std(maxs)
 
 def makeArrayFromTrialResponseList(trialResponses):
     modeDuration = scipy.stats.mode([len(t) for t in trialResponses])[0][0]
@@ -130,6 +131,7 @@ def makeArrayFromTrialResponseList(trialResponses):
         trialResponses_reshape.append(t)
     
     return np.array(trialResponses_reshape)
+
     
 
 saveDir = r"C:\Users\svc_ccg\Desktop\Data\motionscope\pilot"
@@ -141,7 +143,9 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     expDetails = mdfcheck.iloc[ind, 1:].to_dict()
     print(expDetails)
     
-    expDict = {'peakResp':[], 'meanResp':[], 'shuff_peakResp':[], 'shuff_meanResp':[], 'responseMat':[]}
+    metrics = ('meanResp', 'peakResp', 'shuff_meanResp', 'shuff_peakResp', 'stdPeakResp', 'shuff_stdPeakResp')
+    
+    expDict = {a:[] for a in metrics}
     expDict.update(expDetails)
     peakRespPop = []
     meanRespPop = []
@@ -151,9 +155,13 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     #    plt.figure(cell)
         meanResp = np.full((2*len(patchSpeed)-1, 2*len(bckgndSpeed)-1, len(patchSize)), np.nan)
         peakResp = meanResp.copy()
+
         respMat = np.full((2*len(patchSpeed)-1, 2*len(bckgndSpeed)-1, len(patchSize), maxTrialDuration), np.nan)
+        stdPeakResp = meanResp.copy()
         shuff_meanResp = meanResp.copy()
         shuff_peakResp = meanResp.copy()
+        shuff_stdPeakResp = meanResp.copy()
+
         for trial in stim_table.trial_number.unique():
             tempdf = stim_table.loc[stim_table.trial_number==trial]
             psizeInd = np.where(patchSize==tempdf.patchSize.values[0])[0][0]
@@ -175,27 +183,28 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
             
             meanResp[pspeedInd, bspeedInd, psizeInd] = np.mean(means)
             peakResp[pspeedInd, bspeedInd, psizeInd] = np.mean(maxs)
+            stdPeakResp[pspeedInd, bspeedInd, psizeInd] = np.std(maxs)
             
             trialResponses = makeArrayFromTrialResponseList(trialResponses)
             respMat[pspeedInd, bspeedInd, psizeInd, :trialResponses.shape[-1]] = np.nanmean(trialResponses, axis=0)
             #SHUFFLE TO CORRECT FOR TRIAL DURATION DIFFERENCES
             #TODO: JUST GIVE ONE SHUFFLE VALUE FOR EACH UNIQUE TRIAL DURATION
             #TODO: FIGURE OUT HOW TO NORMALIZE RESPONSE BY THIS... MAYBE RETURN STD INSTEAD AND DIVIDE?
-            trialDur = int(trialResponses.shape[-1])
-            shuffmean, shuffmax = getShuffledTrialResponse(dff[cell], trialDur)
+
+            trialDur = int(row.end-row.start)
+            shuffmean, shuffmax, shuffmaxstd = getShuffledTrialResponse(dff[cell], trialDur)
             shuff_meanResp[pspeedInd, bspeedInd, psizeInd] = shuffmean
             shuff_peakResp[pspeedInd, bspeedInd, psizeInd] = shuffmax
+            shuff_stdPeakResp[pspeedInd, bspeedInd, psizeInd] = shuffmaxstd
                 
         
-        for arr in [meanResp, peakResp, shuff_meanResp, shuff_peakResp]:
+        for arr, name in zip([meanResp, peakResp, shuff_meanResp, shuff_peakResp, stdPeakResp, shuff_stdPeakResp], metrics):
             arr = fillRedundant(arr)
+            expDict[name].append(arr)
             
-        
-        expDict['peakResp'].append(peakResp)
-        expDict['meanResp'].append(meanResp)
-        expDict['shuff_peakResp'].append(shuff_peakResp)
-        expDict['shuff_meanResp'].append(shuff_meanResp)
-        expDict['responseMat'].append(respMat)
+#        expDict['peakResp'].append(peakResp)
+#        expDict['meanResp'].append(meanResp)
+
         
             
     #    plt.imshow(np.nanmean(peakResp, axis=2))
