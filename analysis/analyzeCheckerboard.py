@@ -9,6 +9,8 @@ import numpy as np
 import pandas as pd
 import h5py, os, glob
 from matplotlib import pyplot as plt
+from numba import njit
+import scipy.stats, scipy.interpolate
 
 
 manifestFile = r"C:\Users\svc_ccg\Documents\GitHub\openscope_motion\analysis\manifest.csv"
@@ -104,17 +106,30 @@ def dictToHDF5(saveDict, filePath, fileOut=None, grp=None, overwrite=True):
                         print('Could not save: ', key)                  
     if newFile is not None:
         newFile.close()
-        
-def getShuffledTrialResponse(cellData, trialDur, num_iter=1000):
-    means = []
-    maxs = []
+@njit    
+def getShuffledTrialResponse(cellData, trialDur, num_iter=10000):
+    means = np.zeros(num_iter)
+    maxs = np.zeros(num_iter)
     for i in xrange(num_iter):
         start = np.random.randint(0, cellData.size-trialDur)
         strial = cellData[start:start+trialDur]
-        means.append(strial.mean())
-        maxs.append(strial.max())
+        means[i] = np.mean(strial)
+        maxs[i] = np.max(strial)
     
     return np.mean(means), np.mean(maxs)
+
+def makeArrayFromTrialResponseList(trialResponses):
+    modeDuration = scipy.stats.mode([len(t) for t in trialResponses])[0][0]
+    trialResponses_reshape = []
+    for t in trialResponses:
+        if t.size!=modeDuration:
+            x = np.linspace(0, modeDuration, t.size)
+            f = scipy.interpolate.interp1d(x, t)
+            t = f(np.arange(modeDuration))
+        
+        trialResponses_reshape.append(t)
+    
+    return np.array(trialResponses_reshape)
     
 
 saveDir = r"C:\Users\svc_ccg\Desktop\Data\motionscope\pilot"
@@ -126,14 +141,17 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     expDetails = mdfcheck.iloc[ind, 1:].to_dict()
     print(expDetails)
     
-    expDict = {'peakResp':[], 'meanResp':[]}
+    expDict = {'peakResp':[], 'meanResp':[], 'shuff_peakResp':[], 'shuff_meanResp':[], 'responseMat':[]}
     expDict.update(expDetails)
     peakRespPop = []
     meanRespPop = []
+    
+    maxTrialDuration = int(np.ceil(stim_table.duration.max()))
     for cell in np.arange(dff.shape[0]):
     #    plt.figure(cell)
         meanResp = np.full((2*len(patchSpeed)-1, 2*len(bckgndSpeed)-1, len(patchSize)), np.nan)
         peakResp = meanResp.copy()
+        respMat = np.full((2*len(patchSpeed)-1, 2*len(bckgndSpeed)-1, len(patchSize), maxTrialDuration), np.nan)
         shuff_meanResp = meanResp.copy()
         shuff_peakResp = meanResp.copy()
         for trial in stim_table.trial_number.unique():
@@ -144,11 +162,13 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
             
             means = []
             maxs = []
+            trialResponses = []
             for ind, row in tempdf.iterrows():
                 trialResponse = dff[cell, int(row.start):int(row.end)]
                 meantrial = trialResponse.mean()
                 maxtrial = trialResponse.max()
                 
+                trialResponses.append(trialResponse)
                 means.append(meantrial)
                 maxs.append(maxtrial)
             
@@ -156,10 +176,12 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
             meanResp[pspeedInd, bspeedInd, psizeInd] = np.mean(means)
             peakResp[pspeedInd, bspeedInd, psizeInd] = np.mean(maxs)
             
+            trialResponses = makeArrayFromTrialResponseList(trialResponses)
+            respMat[pspeedInd, bspeedInd, psizeInd, :trialResponses.shape[-1]] = np.nanmean(trialResponses, axis=0)
             #SHUFFLE TO CORRECT FOR TRIAL DURATION DIFFERENCES
             #TODO: JUST GIVE ONE SHUFFLE VALUE FOR EACH UNIQUE TRIAL DURATION
             #TODO: FIGURE OUT HOW TO NORMALIZE RESPONSE BY THIS... MAYBE RETURN STD INSTEAD AND DIVIDE?
-            trialDur = int(row.end-row.start)
+            trialDur = int(trialResponses.shape[-1])
             shuffmean, shuffmax = getShuffledTrialResponse(dff[cell], trialDur)
             shuff_meanResp[pspeedInd, bspeedInd, psizeInd] = shuffmean
             shuff_peakResp[pspeedInd, bspeedInd, psizeInd] = shuffmax
@@ -168,16 +190,17 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
         for arr in [meanResp, peakResp, shuff_meanResp, shuff_peakResp]:
             arr = fillRedundant(arr)
             
-#        meanResp = fillRedundant(meanResp)
-#        peakResp = fillRedundant(peakResp)
         
         expDict['peakResp'].append(peakResp)
         expDict['meanResp'].append(meanResp)
+        expDict['shuff_peakResp'].append(shuff_peakResp)
+        expDict['shuff_meanResp'].append(shuff_meanResp)
+        expDict['responseMat'].append(respMat)
         
             
     #    plt.imshow(np.nanmean(peakResp, axis=2))
-        peakRespPop.append(np.nanmean(peakResp, axis=2))
-        meanRespPop.append(np.nanmean(meanResp, axis=2))
+        peakRespPop.append(np.nanmean(peakResp-shuff_peakResp, axis=2))
+        meanRespPop.append(np.nanmean(meanResp-shuff_meanResp, axis=2))
     
     dictToHDF5(expDict, os.path.join(saveDir, str(expDetails['ophys_session_id']) + '_' + expDetails['targeted_structure']+'.hdf5'))
     fig,ax = plt.subplots(1,2)
