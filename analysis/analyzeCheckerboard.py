@@ -108,13 +108,13 @@ def dictToHDF5(saveDict, filePath, fileOut=None, grp=None, overwrite=True):
 def getShuffledTrialResponse(cellData, trialDur, num_iter=1000):
     means = []
     maxs = []
-    for i in xrange(num_iter):
+    for i in range(num_iter):
         start = np.random.randint(0, cellData.size-trialDur)
         strial = cellData[start:start+trialDur]
         means.append(strial.mean())
         maxs.append(strial.max())
     
-    return np.mean(means), np.mean(maxs)
+    return np.mean(means), np.mean(maxs), np.std(maxs)
     
 
 saveDir = r"C:\Users\svc_ccg\Desktop\Data\motionscope\pilot"
@@ -126,7 +126,9 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     expDetails = mdfcheck.iloc[ind, 1:].to_dict()
     print(expDetails)
     
-    expDict = {'peakResp':[], 'meanResp':[]}
+    metrics = ('meanResp', 'peakResp', 'shuff_meanResp', 'shuff_peakResp', 'stdPeakResp', 'shuff_stdPeakResp')
+    
+    expDict = {a:[] for a in metrics}
     expDict.update(expDetails)
     peakRespPop = []
     meanRespPop = []
@@ -134,8 +136,11 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     #    plt.figure(cell)
         meanResp = np.full((2*len(patchSpeed)-1, 2*len(bckgndSpeed)-1, len(patchSize)), np.nan)
         peakResp = meanResp.copy()
+        stdPeakResp = meanResp.copy()
         shuff_meanResp = meanResp.copy()
         shuff_peakResp = meanResp.copy()
+        shuff_stdPeakResp = meanResp.copy()
+
         for trial in stim_table.trial_number.unique():
             tempdf = stim_table.loc[stim_table.trial_number==trial]
             psizeInd = np.where(patchSize==tempdf.patchSize.values[0])[0][0]
@@ -155,24 +160,24 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
             
             meanResp[pspeedInd, bspeedInd, psizeInd] = np.mean(means)
             peakResp[pspeedInd, bspeedInd, psizeInd] = np.mean(maxs)
+            stdPeakResp[pspeedInd, bspeedInd, psizeInd] = np.std(maxs)
             
             #SHUFFLE TO CORRECT FOR TRIAL DURATION DIFFERENCES
             #TODO: JUST GIVE ONE SHUFFLE VALUE FOR EACH UNIQUE TRIAL DURATION
             #TODO: FIGURE OUT HOW TO NORMALIZE RESPONSE BY THIS... MAYBE RETURN STD INSTEAD AND DIVIDE?
             trialDur = int(row.end-row.start)
-            shuffmean, shuffmax = getShuffledTrialResponse(dff[cell], trialDur)
+            shuffmean, shuffmax, shuffmaxstd = getShuffledTrialResponse(dff[cell], trialDur)
             shuff_meanResp[pspeedInd, bspeedInd, psizeInd] = shuffmean
             shuff_peakResp[pspeedInd, bspeedInd, psizeInd] = shuffmax
+            shuff_stdPeakResp[pspeedInd, bspeedInd, psizeInd] = shuffmaxstd
                 
         
-        for arr in [meanResp, peakResp, shuff_meanResp, shuff_peakResp]:
+        for arr, name in zip([meanResp, peakResp, shuff_meanResp, shuff_peakResp, stdPeakResp, shuff_stdPeakResp], metrics):
             arr = fillRedundant(arr)
+            expDict[name].append(arr)
             
-#        meanResp = fillRedundant(meanResp)
-#        peakResp = fillRedundant(peakResp)
-        
-        expDict['peakResp'].append(peakResp)
-        expDict['meanResp'].append(meanResp)
+#        expDict['peakResp'].append(peakResp)
+#        expDict['meanResp'].append(meanResp)
         
             
     #    plt.imshow(np.nanmean(peakResp, axis=2))
