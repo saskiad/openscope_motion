@@ -63,10 +63,14 @@ def getSpeedInd(speed, direction):
     return speedInd
 
 def fillRedundant(mat):
-    for mi in np.arange(mat.shape[2]):
-        m = mat[:, :, mi]
+    if mat.ndim>2:
+        for mi in np.arange(mat.shape[2]):
+            m = mat[:, :, mi]
+            for x in np.arange(mat.shape[0]):
+                m[x,x] = m[2,x]
+    else:
         for x in np.arange(mat.shape[0]):
-            m[x,x] = m[2,x]
+            mat[x,x] = mat[2,x]
     return mat  
 
 def getExperimentDetails(mdf, expID):
@@ -143,7 +147,7 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     expDetails = mdfcheck.iloc[ind, 1:].to_dict()
     print(expDetails)
     
-    metrics = ('meanResp', 'peakResp', 'shuff_meanResp', 'shuff_peakResp', 'stdPeakResp', 'shuff_stdPeakResp')
+    metrics = ('meanResp', 'peakResp', 'shuff_meanResp', 'shuff_peakResp', 'stdPeakResp', 'shuff_stdPeakResp', 'responseMat')
     
     expDict = {a:[] for a in metrics}
     expDict.update(expDetails)
@@ -201,6 +205,9 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
         for arr, name in zip([meanResp, peakResp, shuff_meanResp, shuff_peakResp, stdPeakResp, shuff_stdPeakResp], metrics):
             arr = fillRedundant(arr)
             expDict[name].append(arr)
+        
+        
+        expDict['responseMat'].append(respMat)
             
 #        expDict['peakResp'].append(peakResp)
 #        expDict['meanResp'].append(meanResp)
@@ -220,30 +227,100 @@ for ind, (dff_path, stim_table_path) in enumerate(zip(dff_paths, stim_table_path
     
                 
                 
-                
+              
             
-            
+#Load hdf5 files and aggregate by region
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+hdf5Dir = r"C:\Users\svc_ccg\Desktop\Data\motionscope\pilot"
+hdf5Files = [hf for hf in os.listdir(hdf5Dir) if os.path.isfile(os.path.join(hdf5Dir,hf))]
+
+areas = ['VISam', 'VISl', 'VISpm', 'VISal']
+regionDict = {a:{'respMat':[], 'expID': []} for a in areas}
+
+for f in hdf5Files:
+    expID = f.split('_')[0]
+    area = f.split('_')[1].split('.')[0]
     
+    if area in areas:
+        with h5py.File(os.path.join(hdf5Dir, f)) as h:
+            numberCells = len(h['meanResp'])
+            regionDict[area]['respMat'].extend(h['responseMat'][()])
+            regionDict[area]['expID'].extend([expID]*numberCells)
+
+
+def plotRespMat(rmat):
+    fig, ax = plt.subplots(5,5)
+    if rmat.shape[2]==2:
+        rmat = np.nanmean(rmat, 2)
     
+    maxval = np.nanmax(rmat)
+    minval = np.nanmin(rmat)
+    for row in range(5):
+        for col in range(5):
+            ax[row,col].plot(rmat[row,col], 'k')
+            ax[row,col].set_ylim([minval, maxval])
+            ax[row,col].set_xlim([0, rmat.shape[-1]])
+
+            if not (row==4 and col==0):
+                ax[row,col].set_axis_off()
+            else:
+                ax[row,col].spines['top'].set_visible(False)
+                ax[row,col].spines['right'].set_visible(False)
     
+
+
+def getResponsive(rmat, stdthresh=5, hardthresh=0.2):
+    baseline = rmat[2,2,0]
+    baseline_std = np.nanstd(baseline)
+    thresh = np.nanmean(baseline) + stdthresh*baseline_std
+    if np.nanmax(rmat)> thresh and np.nanmax(rmat)>hardthresh:
+        return True
+    else:
+        return False
+
+def getPatchIndex(rmat):
+    rmat = fillRedundant(rmat)
+    patchmax = np.max(rmat[:, 2])
+    bckmax = np.max(rmat[2,:])
+    return (patchmax - bckmax)/(patchmax+bckmax)
+
+
+for area in areas:
+    rmats = np.array(regionDict[area]['respMat'])
+    hasResp = [getResponsive(r) for r in rmats]
+    print(area)
+    print(str(np.sum(hasResp)) + ' responsive cells out of ' + str(len(hasResp)))
+    
+    rmats = rmats[hasResp]
+    r_meanoversize = np.nanmean(rmats, axis=3)
+    r_maxovertime = np.nanmax(r_meanoversize, axis=3)
+    
+    pI = [getPatchIndex(r) for r in r_maxovertime]
+    print('mean PI: ' + str(np.median(pI)) + ' std PI: ' + str(np.std(pI)))
+    regionMean = fillRedundant(np.nanmean(r_maxovertime, axis=0))
+    
+    fig, ax = plt.subplots()
+    fig.suptitle(area)
+    ax.imshow(regionMean)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
