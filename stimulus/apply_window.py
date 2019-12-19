@@ -34,15 +34,15 @@ def apply_gaussian_window(array, sigma_deg=15, center=None, pixelsPerDegree=5, o
     windowed_array = windowed_array.astype(output_dtype)
     
     if plot:
-        fig,ax = plt.subplots(2)
-        ax[0].imshow(gaussian_array)
-        ax[1].imshow(windowed_array[0])
+        fig,ax = plt.subplots(1,2)
+        ax[0].imshow(gaussian_array, cmap='gray')
+        ax[1].imshow(windowed_array[0], cmap='gray')
         
     
     return windowed_array
 
 
-def apply_linear_window(array, mask_start_radius=15, mask_end_radius=30, center=None, pixelsPerDegree=5, output_dtype=np.uint8, plot=False):
+def apply_linear_window(array, mask_start_radius=15, mask_end_radius=40, center=None, pixelsPerDegree=5, output_dtype=np.uint8, plot=False):
     
     height = array.shape[1]
     width = array.shape[2]
@@ -74,9 +74,9 @@ def apply_linear_window(array, mask_start_radius=15, mask_end_radius=30, center=
     windowed_array = windowed_array.astype(output_dtype)
 
     if plot:
-        fig,ax = plt.subplots(2)
-        ax[0].imshow(mask_array)
-        ax[1].imshow(windowed_array[0])
+        fig,ax = plt.subplots(1,2)
+        ax[0].imshow(mask_array, cmap='gray')
+        ax[1].imshow(windowed_array[0], cmap='gray')
         
     
     return windowed_array
