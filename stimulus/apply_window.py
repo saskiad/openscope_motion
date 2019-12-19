@@ -7,9 +7,10 @@ Created on Wed Dec 18 15:06:28 2019
 
 import numpy as np
 from scipy.ndimage import gaussian_filter
+from matplotlib import pyplot as plt
 
 
-def apply_gaussian_window(array, sigma_deg=15, center=None, pixelsPerDegree=5, output_dtype=np.uint8, clip=True):
+def apply_gaussian_window(array, sigma_deg=15, center=None, pixelsPerDegree=5, output_dtype=np.uint8, clip=True, plot=False):
 
     height = array.shape[1]
     width = array.shape[2]
@@ -28,8 +29,55 @@ def apply_gaussian_window(array, sigma_deg=15, center=None, pixelsPerDegree=5, o
     if clip:
         gaussian_array = np.clip(gaussian_array, 0, 0.607)/0.607
     
-    im_array_zero_centered = im_array.astype(np.int) - 127
+    im_array_zero_centered = array.astype(np.int) - 127
     windowed_array = im_array_zero_centered*gaussian_array + 127
     windowed_array = windowed_array.astype(output_dtype)
     
+    if plot:
+        fig,ax = plt.subplots(2)
+        ax[0].imshow(gaussian_array)
+        ax[1].imshow(windowed_array[0])
+        
+    
     return windowed_array
+
+
+def apply_linear_window(array, mask_start_radius=15, mask_end_radius=30, center=None, pixelsPerDegree=5, output_dtype=np.uint8, plot=False):
+    
+    height = array.shape[1]
+    width = array.shape[2]
+    
+    mask_start_radius_pix = mask_start_radius * pixelsPerDegree
+    mask_end_radius_pix = mask_end_radius * pixelsPerDegree
+    
+   
+    if center is None:
+        center = [int(round(d/2.)) for d in [height, width]]
+    
+    #Make array that is encodes distance from center position
+    heightfromcenter = np.arange(height) - center[0]
+    widthfromcenter = np.arange(width) - center[1]
+    
+    hh, ww = np.meshgrid(heightfromcenter, widthfromcenter)
+    
+    distfromcenter = (hh**2 + ww**2)**0.5
+    if distfromcenter.shape[0] != height:
+        distfromcenter = distfromcenter.T
+    
+    #Make mask by clipping and inverting distance array to get linear fall off between start and end radii
+    mask_array = np.clip(distfromcenter, mask_start_radius_pix, mask_end_radius_pix)
+    mask_array = mask_array - mask_start_radius_pix
+    mask_array = 1 - mask_array/mask_array.max()
+    
+    im_array_zero_centered = array.astype(np.int) - 127
+    windowed_array = im_array_zero_centered*mask_array + 127
+    windowed_array = windowed_array.astype(output_dtype)
+
+    if plot:
+        fig,ax = plt.subplots(2)
+        ax[0].imshow(mask_array)
+        ax[1].imshow(windowed_array[0])
+        
+    
+    return windowed_array
+    
