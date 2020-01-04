@@ -21,7 +21,7 @@ class dotTranslation():
         self.pixelsPerDegree = 10/2 
         self.screenWidth = int(1920/2)
         self.screenHeight = int(1200/2)
-        self.centerPosDegrees = np.array([-60,-20])
+        self.centerPosDegrees = np.array([-50,-10])
         self.scaleFactor = 1/20.
         self.dotColors = [0, 254]
         self.heading = 'forward'

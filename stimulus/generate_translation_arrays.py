@@ -11,7 +11,8 @@ import dotTranslationClass
 
 #FIND RELATIONSHIP BETWEEN DOTNUM AND SCREEN DENSITY
 d = dotTranslationClass.dotTranslation()
-iterations = 2
+d.scaleFactor = 0.04 #chosen to make dot size 2 deg radius in center of screen
+iterations = 3
 dotNums = [20, 80, 320, 800, 1600, 5000]
 densityPerDot_i = []
 func = lambda x,a,b: b*x**(float(a))
@@ -24,8 +25,9 @@ for i in np.arange(iterations):
         d.dotColors = [255]
         d.backgroundColor = 0
         d.makeStimulusArray(offset=-60)
+#        d.centerPosDegrees = np.array([-50,-10])
         
-        lum.append(np.mean([np.mean(im[200:400, 390:590]) for im in d.im_array]))
+        lum.append(np.mean([np.mean(im[250:450, 430:530]) for im in d.im_array]))
     
     lum = np.array(lum)
     plt.plot(lum/255., dotNums, 'ko')
@@ -37,19 +39,22 @@ for i in np.arange(iterations):
 densityPerDot = np.mean(densityPerDot_i, axis=0)
 
 #Determined before for scale factors 1/20 and 1/40
-densityPerDot_20 = np.array([1.27355431e+00, 1.16888103e+04])
-densityPerDot_40 = np.array([1.06916041e+00, 3.56860910e+04])
+#PILOT
+#densityPerDot_20 = np.array([1.27355431e+00, 1.16888103e+04]) 
+#densityPerDot_40 = np.array([1.06916041e+00, 3.56860910e+04])
 
+#PRODUCTION
+#densityPerDot_04 = np.array([1.24205871e+00, 1.05481880e+04])
 
 #MAKE STIM ARRAYS
 d = dotTranslationClass.dotTranslation()
-d.saveDir = r"\\allen\programs\braintv\workgroups\nc-ophys\corbettb\motion stimuli\translation"
+d.saveDir = r"\\allen\programs\braintv\workgroups\nc-ophys\corbettb\motionscope\translation"
 headings = ['forward', 'backward']
 centers = [[-50,-10]]
 radius = [10]
 speeds = [2.05, 1, 0.48, 0.24, 0.096, 0.05] #to make speeds at center [400,200,100,50,20,10]
-dotDensities = [0.1, 0.2, 0.4]
-scaleFactors = [1/20., 1/40.]
+dotDensities = [0.2]
+scaleFactors = [0.04] #to get dot radius of 2 deg at center
 
 fig, ax = plt.subplots()
 for h in headings:
@@ -63,10 +68,8 @@ for h in headings:
                         d.radius = rad
                         d.speed = speed
                         d.timePoints =  np.max([500, 60+3*(d.viewingDistance/speed)])
-                        if scale == 0.05:
-                            dotNum = np.round(func(dotDensity, *densityPerDot_20)).astype(int)
-                        else:
-                            dotNum = np.round(func(dotDensity, *densityPerDot_40)).astype(int)
+                        
+                        dotNum = np.round(func(dotDensity, *densityPerDot)).astype(int)
                         
                         d.dotNum = dotNum
                         d.scaleFactor = scale
